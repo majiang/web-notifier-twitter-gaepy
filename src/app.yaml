@@ -1,0 +1,42 @@
+application: toy-notifier-twitter
+version: 0
+runtime: python27
+api_version: 1
+threadsafe: true
+
+
+libraries:
+
+- name: django
+  version: "1.5"
+
+- name: ssl
+  version: latest
+
+
+handlers:
+
+- url: /
+  script: main.app
+
+- url: /callback
+  script: main.app
+  secure: always
+
+- url: /register
+  script: main.app
+  secure: always
+
+- url: /css
+  static_dir: css
+
+- url: /js
+  static_dir: js
+
+- url: /cron
+  script: cron.app
+  login: admin
+
+- url: /(.*\.(gif|png|jpg|ico))
+  static_files: static_root/\1
+  upload: static_root/.*

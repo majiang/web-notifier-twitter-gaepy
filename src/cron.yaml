@@ -1,0 +1,5 @@
+cron:
+
+- description: check update and tweet
+  url: /cron
+  schedule: every 23 minutes

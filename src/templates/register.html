@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Add to watchlist{% endblock %}
+{% block content %}
+<form method="POST" action="/register">
+	<input type="url" name="target_url" />
+	<input type="hidden" name="twitter_id" value="{{ twitter_id }}" />
+	<input type="hidden" name="token" value="{{ token }}" />
+	<input type="submit" value="Add to watchlist" class="btn btn-primary btn-lg"/>
+</form>
+{% endblock %}
