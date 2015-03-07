@@ -59,7 +59,7 @@ class CronJobHandler(webapp2.RequestHandler):
 				self.debug('will be the last to process')
 				conti = False
 			content = get_hash(url)
-			if page.content != content:
+			if content != '' and page.content != content:
 				page.content = content
 				self.tweet(User.get_by_key_name(user_id), url)
 				tweet_made += 1

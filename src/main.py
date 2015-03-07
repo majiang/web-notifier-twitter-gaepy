@@ -145,7 +145,10 @@ class Page(db.Model):
 
 
 def get_hash(url):
-	return sha1(fetch(url).content).hexdigest()
+	result = fetch(url)
+	if result.status_code == 200:
+		return ''
+	return sha1(result.content).hexdigest()
 
 def add_page(user, url):
 	kn = user.key().name() + ' ' + url
