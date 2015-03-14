@@ -146,7 +146,9 @@ class Page(db.Model):
 
 def get_hash(url):
 	result = fetch(url)
-	if result.status_code == 200:
+	logging.debug('fetch(%s).status_code = %d' % (url, result.status_code))
+	if result.status_code != 200:
+		logging.debug('ignore this page for error')
 		return ''
 	return sha1(result.content).hexdigest()
 
